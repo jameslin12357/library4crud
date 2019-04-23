@@ -30,7 +30,7 @@
                         <!--<td>@fat</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/booklenders">Booklenders</a></th>
+                        <th scope="row"><a href="/bookslenders">Booklenders</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
