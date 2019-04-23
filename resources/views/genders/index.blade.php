@@ -18,59 +18,54 @@
 
                     <tbody>
                     <tr>
-                        <th scope="row"><a href="/doctors">Doctors</a></th>
+                        <th scope="row"><a href="/authors">Authors</a></th>
                         <!--<td>Mark</td>-->
                         <!--<td>Otto</td>-->
                         <!--<td>@mdo</td>-->
                     </tr>
                     <tr>
-                        <th scope="row" class="active-tab"><a href="/genders">Genders</a></th>
+                        <th scope="row"><a href="/books">Books</a></th>
                         <!--<td>Jacob</td>-->
                         <!--<td>Thornton</td>-->
                         <!--<td>@fat</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/insurances">Insurances</a></th>
+                        <th scope="row"><a href="/booklenders">Booklenders</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/medications">Medications</a></th>
+                        <th scope="row"><a href="/categories">Categories</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/patients">Patients</a></th>
+                        <th scope="row" class="active-tab"><a href="/genders">Genders</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/procedures">Procedures</a></th>
+                        <th scope="row"><a href="/lenders">Lenders</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/visits">Visits</a></th>
+                        <th scope="row"><a href="/publishers">Publishers</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/visitsmedications">Visitsmedications</a></th>
+                        <th scope="row"><a href="/staffs">Staffs</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
-                    <tr>
-                        <th scope="row"><a href="/visitsprocedures">Visitsprocedures</a></th>
-                        <!--<td>Larry</td>-->
-                        <!--<td>the Bird</td>-->
-                        <!--<td>@twitter</td>-->
-                    </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -89,8 +84,8 @@
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Gender</th>
-                        <th scope="col">Date Created</th>
-                        <th scope="col">Date Edited</th>
+                        <th scope="col">Date_created</th>
+                        <th scope="col">Date_edited</th>
                         @if (Auth::user()->level === 1)
                             <th scope="col"><a href="/genders/create" class="btn btn-outline-secondary">Create</a></th>
                         @endif

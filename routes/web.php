@@ -17,7 +17,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::resource('addresses', 'AddressController');
 Route::resource('authors', 'AuthorController');
 Route::resource('books', 'BookController');
-Route::resource('booklenders', 'BooklenderController');
+Route::resource('bookslenders', 'BooklenderController');
 Route::resource('categories', 'CategoryController');
 Route::resource('genders', 'GenderController');
 Route::resource('lenders', 'LenderController');

@@ -5,8 +5,8 @@
     <div class="container pt-100">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
-                <h3 class="login-heading mb-4 text-center">Create Insurance</h3>
-                <form action="/insurances" method="post">
+                <h3 class="login-heading mb-4 text-center">Create category</h3>
+                <form action="/categories" method="post">
                     @csrf
                     <div class="form-group">
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name" value="{{ old('name') }}" name="name" required>

@@ -18,59 +18,54 @@
 
                     <tbody>
                     <tr>
-                        <th scope="row"><a href="/doctors">Doctors</a></th>
+                        <th scope="row"><a href="/authors">Authors</a></th>
                         <!--<td>Mark</td>-->
                         <!--<td>Otto</td>-->
                         <!--<td>@mdo</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/genders">Genders</a></th>
+                        <th scope="row"><a href="/books">Books</a></th>
                         <!--<td>Jacob</td>-->
                         <!--<td>Thornton</td>-->
                         <!--<td>@fat</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/insurances">Insurances</a></th>
+                        <th scope="row"><a href="/booklenders">Booklenders</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/medications">Medications</a></th>
+                        <th scope="row"><a href="/categories">Categories</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/patients">Patients</a></th>
+                        <th scope="row"><a href="/genders">Genders</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/procedures">Procedures</a></th>
+                        <th scope="row" class="active-tab"><a href="/lenders">Lenders</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/visits">Visits</a></th>
+                        <th scope="row"><a href="/publishers">Publishers</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/visitsmedications">Visitsmedications</a></th>
+                        <th scope="row"><a href="/staffs">Staffs</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
-                    <tr>
-                        <th scope="row" class="active-tab"><a href="/visitsprocedures">Visitsprocedures</a></th>
-                        <!--<td>Larry</td>-->
-                        <!--<td>the Bird</td>-->
-                        <!--<td>@twitter</td>-->
-                    </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -88,30 +83,42 @@
                     <thead>
                     <tr>
                         <th scope="col">Id</th>
-                        <th scope="col">Visit Id</th>
-                        <th scope="col">Procedure Id</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">DOB</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Gender Id</th>
+                        <th scope="col">Address Id</th>
                         <th scope="col">Date Created</th>
                         <th scope="col">Date Edited</th>
                         @if (Auth::user()->level === 1)
-                            <th scope="col"><a href="/visitsprocedures/create" class="btn btn-outline-secondary">Create</a></th>
+                            <th scope="col"><a href="/lenders/create" class="btn btn-outline-secondary">Create</a></th>
                         @endif
 
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($visitsprocedures as $visitprocedure)
+                    @foreach ($lenders as $lender)
                         <tr>
-                            <td>{{ $visitprocedure->id }}</td>
-                            <td>{{ $visitprocedure->visit_id }}</td>
-                            <td>{{ $visitprocedure->procedure_id }}</td>
-                            <td>{{ $visitprocedure->date_created }}</td>
-                            <td>{{ $visitprocedure->date_edited }}</td>
+                            <td>{{ $lender->id }}</td>
+                            <td>{{ $lender->first_name }}</td>
+                            <td>{{ $lender->last_name }}</td>
+                            <td>{{ $lender->age }}</td>
+                            <td>{{ $lender->dob }}</td>
+                            <td>{{ $lender->email }}</td>
+                            <td>{{ $lender->phone_number }}</td>
+                            <td>{{ $lender->gender_id }}</td>
+                            <td>{{ $lender->address_id }}</td>
+                            <td>{{ $lender->date_created }}</td>
+                            <td>{{ $lender->date_edited }}</td>
                             @if (Auth::user()->level === 1)
                                 <td>
-                                    <a href="/visitsprocedures/{{ $visitprocedure->id }}/edit" class="btn btn-outline-secondary">Edit</a>
+                                    <a href="/lenders/{{ $lender->id }}/edit" class="btn btn-outline-secondary">Edit</a>
                                 </td>
                                 <td>
-                                    <form action="/visitsprocedures/{{ $visitprocedure->id }}" method="post">
+                                    <form action="/lenders/{{ $lender->id }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-outline-secondary">Delete</button>

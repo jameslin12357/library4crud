@@ -1,11 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PublisherController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +19,14 @@ class PublisherController extends Controller
     public function index()
     {
         //
+        $publishers = DB::select('SELECT * FROM publishers');
+        $count = DB::table('publishers')->count();
+        $data = array(
+            'publishers' => $publishers,
+            'count' => $count,
+            'title' => 'Publishers'
+        );
+        return view('publishers/index')->with($data);
     }
 
     /**
@@ -24,6 +37,15 @@ class PublisherController extends Controller
     public function create()
     {
         //
+        $level = Auth::user()->level;
+        if ($level === 1){
+            $data = array(
+                'title' => 'Create'
+            );
+            return view('publishers/new')->with($data);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -35,6 +57,20 @@ class PublisherController extends Controller
     public function store(Request $request)
     {
         //
+        $level = Auth::user()->level;
+        if ($level === 1){
+            $validatedData = $request->validate([
+                'name' => 'required|max:100'
+            ]);
+            $name = $request->input('name');
+            DB::table('publishers')->insert(
+                ['name' => $name]
+            );
+            return redirect('/publishers')->with('success', 'Publisher created.');
+        } else {
+            return redirect('/');
+        }
+
     }
 
     /**
@@ -57,6 +93,20 @@ class PublisherController extends Controller
     public function edit($id)
     {
         //
+        $level = Auth::user()->level;
+        if ($level === 1){
+            $publisher = DB::select('select * from publishers where id = ?', array($id));
+            if (empty($publisher)) {
+                return view('404');
+            }
+            $data = array(
+                'title' => 'Edit',
+                'publisher' => $publisher
+            );
+            return view('publishers/edit')->with($data);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -69,6 +119,25 @@ class PublisherController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $level = Auth::user()->level;
+        if ($level === 1){
+            $publisher = DB::select('select * from publishers where id = ?', array($id));
+            if (empty($publisher)) {
+                return view('404');
+            } else {
+                $validatedData = $request->validate([
+                    'name' => 'required|max:100'
+                ]);
+                $name = $request->input('name');
+                DB::table('publishers')
+                    ->where('id', $id)
+                    ->update(['name' => $name]);
+                return redirect('/publishers')->with('success', 'Publisher edited.');
+
+            }
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -80,5 +149,17 @@ class PublisherController extends Controller
     public function destroy($id)
     {
         //
+        $level = Auth::user()->level;
+        if ($level === 1){
+            $publisher = DB::select('select * from publishers where id = ?', array($id));
+            if (empty($publisher)) {
+                return view('404');
+            } else {
+                DB::table('publishers')->where('id', '=', $id)->delete();
+                return redirect('/publishers')->with('success', 'Publisher deleted.');
+            }
+        } else {
+            return redirect('/');
+        }
     }
 }

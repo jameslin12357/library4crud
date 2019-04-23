@@ -18,59 +18,54 @@
 
                     <tbody>
                     <tr>
-                        <th scope="row"><a href="/doctors">Doctors</a></th>
+                        <th scope="row"><a href="/authors">Authors</a></th>
                         <!--<td>Mark</td>-->
                         <!--<td>Otto</td>-->
                         <!--<td>@mdo</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/genders">Genders</a></th>
+                        <th scope="row"><a href="/books">Books</a></th>
                         <!--<td>Jacob</td>-->
                         <!--<td>Thornton</td>-->
                         <!--<td>@fat</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/insurances">Insurances</a></th>
+                        <th scope="row"><a href="/booklenders">Booklenders</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/medications">Medications</a></th>
+                        <th scope="row"><a href="/categories">Categories</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/patients">Patients</a></th>
+                        <th scope="row"><a href="/genders">Genders</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/procedures">Procedures</a></th>
+                        <th scope="row"><a href="/lenders">Lenders</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
                     <tr>
-                        <th scope="row"><a href="/visits">Visits</a></th>
+                        <th scope="row" class="active-tab"><a href="/publishers">Publishers</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
                     <tr>
-                        <th scope="row" class="active-tab"><a href="/visitsmedications">Visitsmedications</a></th>
+                        <th scope="row"><a href="/staffs">Staffs</a></th>
                         <!--<td>Larry</td>-->
                         <!--<td>the Bird</td>-->
                         <!--<td>@twitter</td>-->
                     </tr>
-                    <tr>
-                        <th scope="row"><a href="/visitsprocedures">Visitsprocedures</a></th>
-                        <!--<td>Larry</td>-->
-                        <!--<td>the Bird</td>-->
-                        <!--<td>@twitter</td>-->
-                    </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -88,30 +83,24 @@
                     <thead>
                     <tr>
                         <th scope="col">Id</th>
-                        <th scope="col">Visit Id</th>
-                        <th scope="col">Medication Id</th>
-                        <th scope="col">Date Created</th>
-                        <th scope="col">Date Edited</th>
+                        <th scope="col">Name</th>
                         @if (Auth::user()->level === 1)
-                            <th scope="col"><a href="/visitsmedications/create" class="btn btn-outline-secondary">Create</a></th>
+                            <th scope="col"><a href="/publishers/create" class="btn btn-outline-secondary">Create</a></th>
                         @endif
 
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($visitsmedications as $visitmedication)
+                    @foreach ($publishers as $publisher)
                         <tr>
-                            <td>{{ $visitmedication->id }}</td>
-                            <td>{{ $visitmedication->visit_id }}</td>
-                            <td>{{ $visitmedication->medication_id }}</td>
-                            <td>{{ $visitmedication->date_created }}</td>
-                            <td>{{ $visitmedication->date_edited }}</td>
+                            <td>{{ $publisher->id }}</td>
+                            <td>{{ $publisher->name }}</td>
                             @if (Auth::user()->level === 1)
                                 <td>
-                                    <a href="/visitsmedications/{{ $visitmedication->id }}/edit" class="btn btn-outline-secondary">Edit</a>
+                                    <a href="/publishers/{{ $publisher->id }}/edit" class="btn btn-outline-secondary">Edit</a>
                                 </td>
                                 <td>
-                                    <form action="/visitsmedications/{{ $visitmedication->id }}" method="post">
+                                    <form action="/publishers/{{ $publisher->id }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-outline-secondary">Delete</button>
